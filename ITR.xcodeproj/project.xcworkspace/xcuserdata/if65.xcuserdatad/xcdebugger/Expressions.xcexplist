@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "-[SediVC shouldPerformSegueWithIdentifier:sender:]:SediVC.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "totali">
+            </PersistentString>
+            <PersistentString
+               value = "totali[sedi[indexPath.row]]">
+            </PersistentString>
+            <PersistentString
+               value = "sedi[indexPath.row]">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[SediDVC tableView:cellForRowAtIndexPath:]:SediDVC.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "_totale">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>

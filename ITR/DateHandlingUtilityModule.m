@@ -42,19 +42,25 @@
     
     NSTimeZone *defaultTimeZone = [[NSTimeZone alloc] initWithName:defaultTimeZoneName];
     
-    NSCalendar *calendar = [NSCalendar currentCalendar];
+    /*NSCalendar *calendar = [NSCalendar currentCalendar];
     [calendar setTimeZone:defaultTimeZone];
     [calendar setFirstWeekday:2];
-    [calendar setMinimumDaysInFirstWeek:3];
+    [calendar setMinimumDaysInFirstWeek:4];
     
     NSDateComponents *dateComponents = [calendar componentsInTimeZone:defaultTimeZone fromDate:date]; //estrae tutti i componenti...
     
     NSDateComponents *toSearchComponents = [[NSDateComponents alloc] init];
     [toSearchComponents setTimeZone:defaultTimeZone];
+    
     [toSearchComponents setMonth:[dateComponents month]];
     [toSearchComponents setDay:[dateComponents day]];
+
     
-    return [calendar nextDateAfterDate:date matchingComponents:toSearchComponents options:NSCalendarSearchBackwards|NSCalendarMatchNextTimePreservingSmallerUnits];
+    NSDate *testDate = [calendar nextDateAfterDate:date matchingComponents:toSearchComponents options:NSCalendarSearchBackwards|NSCalendarMatchPreviousTimePreservingSmallerUnits];*/
+    
+    NSDate *testDate = [[NSCalendar currentCalendar] dateByAddingUnit:NSCalendarUnitDay value:-365 toDate:date options:0];
+    
+    return testDate;
 }
 
 -(NSDate*)equivalentDayOfTheLastYearWithDate:(NSDate*)date{
@@ -67,19 +73,36 @@
     
     NSTimeZone *defaultTimeZone = [[NSTimeZone alloc] initWithName:defaultTimeZoneName];
     
-    NSCalendar *calendar = [NSCalendar currentCalendar];
+    /*NSCalendar *calendar = [NSCalendar currentCalendar];
     [calendar setTimeZone:defaultTimeZone];
     [calendar setFirstWeekday:2];
     [calendar setMinimumDaysInFirstWeek:3];
     
     NSDateComponents *dateComponents = [calendar componentsInTimeZone:defaultTimeZone fromDate:date]; //estrae tutti i componenti...
-    
+
     NSDateComponents *toSearchComponents = [[NSDateComponents alloc] init];
     [toSearchComponents setTimeZone:defaultTimeZone];
     [toSearchComponents setWeekOfYear:[dateComponents weekOfYear]];
     [toSearchComponents setWeekday:[dateComponents weekday]];
     
-    return [calendar nextDateAfterDate:date matchingComponents:toSearchComponents options:NSCalendarSearchBackwards|NSCalendarMatchNextTimePreservingSmallerUnits];
+    return [calendar nextDateAfterDate:date matchingComponents:toSearchComponents options:NSCalendarSearchBackwards|NSCalendarMatchNextTimePreservingSmallerUnits];*/
+    
+    NSCalendar *gregorian = [[NSCalendar alloc]initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+    [gregorian setTimeZone:defaultTimeZone];
+    [gregorian setFirstWeekday:2];
+    [gregorian setMinimumDaysInFirstWeek:4];
+    
+    NSDateComponents *currentDateComponents = [gregorian componentsInTimeZone:defaultTimeZone fromDate:date];
+    
+    NSDateComponents *newDateComponents = [[NSDateComponents alloc]init];
+    [newDateComponents setTimeZone:defaultTimeZone];
+    [newDateComponents setYear:[currentDateComponents year] - 1 ];
+    [newDateComponents setWeekOfYear:[currentDateComponents weekOfYear]];
+    [newDateComponents setWeekday:[currentDateComponents weekday]];
+    
+    NSDate *newDate = [gregorian dateFromComponents:newDateComponents];
+    
+    return newDate;
 }
 
 -(NSDate*)addToDate:(NSDate*)date andNumberOfDays:(int)number{

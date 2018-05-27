@@ -272,14 +272,14 @@
         varDelta = varTotalePeriodo - varTotalePeriodoAP;
         varDeltaP = varTotalePeriodoAP ? varDelta/varTotalePeriodoAP : 0;
         
-        /*NSString *dC = _periodiDict[_periodoSel][@"data_corrente"];
+        NSString *dC = _periodiDict[_periodoSel][@"data_corrente"];
         NSString *dI = _periodiDict[_periodoSel][@"data_inizio"];
         NSString *dF = _periodiDict[_periodoSel][@"data_fine"];
         NSString *dCAP = _periodiDict[_periodoSel][@"data_corrente_ap"];
         NSString *dIAP = _periodiDict[_periodoSel][@"data_inizio_ap"];
         NSString *dFAP = _periodiDict[_periodoSel][@"data_fine_ap"];
 
-        NSString *descrizionePeriodo = [[NSString alloc]initWithFormat:@"%@, %@, %@, %@, %@, %@", dC, dI, dF, dCAP, dIAP, dFAP];*/
+        //NSString *descrizionePeriodo = [[NSString alloc]initWithFormat:@"%@, %@, %@, %@, %@, %@", dC, dI, dF, dCAP, dIAP, dFAP];
         
         NSString *descrizionePeriodo = _periodoSel;
         
